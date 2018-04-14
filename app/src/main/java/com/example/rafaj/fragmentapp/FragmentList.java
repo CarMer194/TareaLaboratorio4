@@ -52,6 +52,7 @@ public class FragmentList extends ListFragment implements AdapterView.OnItemClic
 
             Bundle bundle = new Bundle();
             bundle.putString("KEY", adapterView.getItemAtPosition(i).toString());
+            System.out.println(i+" ");
             FragmentViewer frag = new FragmentViewer();
             frag.setArguments(bundle);
 

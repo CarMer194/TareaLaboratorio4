@@ -13,20 +13,21 @@ import android.widget.Toast;
  */
 
 public class FragmentViewer extends Fragment {
-    TextView text;
+    TextView text1,text2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.viewer_fragment, container, false);
 
-        text = view.findViewById(R.id.textId);
+        text1 = view.findViewById(R.id.textId);
+        text2 =view.findViewById(R.id.informacion);
         Bundle bundle = this.getArguments();
 
 
         if(bundle != null){
             Toast.makeText(getActivity(), "Item: " + bundle.getString("KEY"), Toast.LENGTH_SHORT).show();
 
-            text.setText(bundle.getString("KEY"));
+            text1.setText(bundle.getString("KEY"));
 
         }
 
