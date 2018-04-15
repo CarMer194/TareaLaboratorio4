@@ -3,41 +3,44 @@ package com.example.rafaj.fragmentapp;
 import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.view.View;
+
+import java.util.Arrays;
 
 /**
  * Created by Carlos on 14/4/2018.
  */
 
-public class planetas implements Parcelable {
+public class Planetas implements Parcelable {
     private String[] informacion;
     private String[] nombrePlaneta;
     private String planeta;
     private String info;
     private String rutaImagen;
-    private String key;
     private String pack;
-    private Resources resources;
 
 
-    protected planetas(Parcel in, String pack) {
-        this.pack=pack;
-        informacion= resources.getStringArray(R.array.informacion);
-        nombrePlaneta= resources.getStringArray(R.array.Planets);
+
+    protected Planetas(View view) {
+        this.pack="com.example.rafaj.fragmentapp";
+
+        informacion= view.getResources().getStringArray(R.array.informacion);
+        nombrePlaneta= view.getResources().getStringArray(R.array.Planets);
     }
 
-    public static final Creator<planetas> CREATOR = new Creator<planetas>() {
+    public static final Creator<Planetas> CREATOR = new Creator<Planetas>() {
         @Override
-        public planetas createFromParcel(Parcel in) {
-            return new planetas(in);
+        public Planetas createFromParcel(Parcel in) {
+            return new Planetas(in);
         }
 
         @Override
-        public planetas[] newArray(int size) {
-            return new planetas[size];
+        public Planetas[] newArray(int size) {
+            return new Planetas[size];
         }
     };
 
-    public planetas(Parcel in) {
+    public Planetas(Parcel in) {
 
     }
 
@@ -99,15 +102,21 @@ public class planetas implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(String.valueOf(informacion));
-        dest.writeString(String.valueOf(nombrePlaneta));
+        dest.writeString(Arrays.toString(informacion));
+        dest.writeString(Arrays.toString(nombrePlaneta));
         dest.writeString(rutaImagen);
-        dest.writeString(key);
+        dest.writeString(planeta);
+        dest.writeString(info);
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void readFromParcel (Parcel in){
+        in.readStringArray(informacion);
+        in.readStringArray(nombrePlaneta);
+        rutaImagen = in.readString();
+        planeta=in.readString();
+        info=in.readString();
     }
+
 
     public String getPlaneta() {
         return planeta;

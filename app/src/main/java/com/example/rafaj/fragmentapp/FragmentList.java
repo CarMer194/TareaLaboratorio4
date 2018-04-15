@@ -40,19 +40,23 @@ public class FragmentList extends ListFragment implements AdapterView.OnItemClic
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         //Toast.makeText(getActivity(), "Item: " + adapterView.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
+        Planetas planetas = new Planetas(view);
+
+        planetas.setInfo(i);
+        System.out.println(planetas.getRutaImagen());
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             Intent newIntent = new Intent(getActivity().getApplicationContext(), Main2Activity.class);
-            newIntent.setAction(Intent.ACTION_SEND);
-            newIntent.setType("text/plain");
-            newIntent.putExtra(Intent.EXTRA_TEXT, adapterView.getItemAtPosition(i).toString());
+            //newIntent.setAction(Intent.ACTION_SEND);
+            //newIntent.setType("text/plain");
+            newIntent.putExtra("planeta", planetas);
             startActivity(newIntent);
         }else if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-            Toast.makeText(getActivity(), "Item: " + adapterView.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "Item: " + adapterView.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
 
             Bundle bundle = new Bundle();
-            bundle.putString("KEY", adapterView.getItemAtPosition(i).toString());
-            System.out.println(i+" ");
+            bundle.putParcelable("planeta",planetas);
+            //System.out.println(i+" ");
             FragmentViewer frag = new FragmentViewer();
             frag.setArguments(bundle);
 
