@@ -43,7 +43,6 @@ public class FragmentList extends ListFragment implements AdapterView.OnItemClic
         Planetas planetas = new Planetas(view);
 
         planetas.setInfo(i);
-        System.out.println(planetas.getRutaImagen());
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             Intent newIntent = new Intent(getActivity().getApplicationContext(), Main2Activity.class);

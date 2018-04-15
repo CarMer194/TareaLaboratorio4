@@ -41,6 +41,11 @@ public class Planetas implements Parcelable {
     };
 
     public Planetas(Parcel in) {
+        //in.readStringArray(informacion);
+        //in.readStringArray(nombrePlaneta);
+        rutaImagen = in.readString();
+        planeta = in.readString();
+        info = in.readString();
 
     }
 
@@ -102,16 +107,16 @@ public class Planetas implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(Arrays.toString(informacion));
-        dest.writeString(Arrays.toString(nombrePlaneta));
+        //dest.writeString(Arrays.toString(informacion));
+        //dest.writeString(Arrays.toString(nombrePlaneta));
         dest.writeString(rutaImagen);
         dest.writeString(planeta);
         dest.writeString(info);
     }
 
     public void readFromParcel (Parcel in){
-        in.readStringArray(informacion);
-        in.readStringArray(nombrePlaneta);
+        //in.readStringArray(informacion);
+        //in.readStringArray(nombrePlaneta);
         rutaImagen = in.readString();
         planeta=in.readString();
         info=in.readString();
